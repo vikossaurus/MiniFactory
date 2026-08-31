@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#111318">
+  <title>Mini Factory</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="auth" class="screen">
+  <div class="card auth-card">
+    <h1>🏭 Mini Factory</h1>
+    <p class="muted">Constrói. Automatiza. Cresce. ∞</p>
+
+    <input id="email" type="email" autocomplete="email" placeholder="Email">
+    <input id="password" type="password" autocomplete="current-password" placeholder="Password">
+    <input id="username" maxlength="20" autocomplete="nickname" placeholder="Username (só ao criar conta)">
+
+    <div class="row">
+      <button id="loginBtn" class="primary">Entrar</button>
+      <button id="signupBtn">Criar conta</button>
+    </div>
+
+    <p id="authMsg" class="message"></p>
+  </div>
+</section>
+
+<!-- JOGO -->
+<main id="app" hidden>
+  <header class="topbar">
+    <div class="logo">🏭 <b>Mini Factory</b></div>
+
+    <div class="stats">
+      <span>👤 <b id="me">---</b></span>
+      <span>💰 <b id="money">500</b>€</span>
+      <span>⛏️ <b id="iron">0</b></span>
+      <span>🔩 <b id="plates">0</b></span>
+      <span>⚡ <b id="energy">0</b></span>
+    </div>
+
+    <div class="top-actions">
+      <button id="saveBtn">💾</button>
+      <button id="exploreBtn">🌍</button>
+      <button id="leaderBtn">🏆</button>
+      <button id="logoutBtn">↪</button>
+    </div>
+  </header>
+
+  <canvas id="world"></canvas>
+
+  <aside id="info">
+    <h3 id="selName">Construção</h3>
+    <p id="selInfo" class="muted">Escolhe uma construção.</p>
+    <hr>
+    <b>⚙️ Controlos</b>
+    <p class="muted">PC: botão direito para mover.<br>Telemóvel: arrasta o mapa.</p>
+    <label class="check">
+      <input id="publicFactory" type="checkbox">
+      <span>Fábrica pública</span>
+    </label>
+  </aside>
+
+  <div id="toast"></div>
+
+  <nav id="buildbar">
+    <button data-type="miner">⛏️<small>Minerador</small><em>50€</em></button>
+    <button data-type="belt">➡️<small>Tapete</small><em>5€</em></button>
+    <button data-type="furnace">🔥<small>Fornalha</small><em>80€</em></button>
+    <button data-type="storage">📦<small>Armazém</small><em>40€</em></button>
+    <button data-type="generator">⚡<small>Gerador</small><em>100€</em></button>
+    <button id="sellBtn">💰<small>Vender</small><em>×12€</em></button>
+  </nav>
+</main>
+
+<!-- MODAL -->
+<div id="modal" class="screen" hidden>
+  <div class="card modal-card">
+    <button id="closeModal" class="close">✕</button>
+    <h2 id="modalTitle"></h2>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

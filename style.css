@@ -1,0 +1,142 @@
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+
+:root{
+  --bg:#101217;
+  --panel:#1b1e24;
+  --panel2:#23272f;
+  --border:#3b414b;
+  --text:#f4f6f8;
+  --muted:#9ca3ad;
+  --accent:#7c8cff;
+}
+
+html,body{
+  margin:0;width:100%;height:100%;
+  overflow:hidden;background:var(--bg);color:var(--text);
+  font:14px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  touch-action:none;
+}
+
+button,input{font:inherit}
+button{
+  border:1px solid var(--border);border-radius:9px;
+  background:var(--panel2);color:#fff;padding:9px 12px;
+  cursor:pointer;user-select:none;
+}
+button:hover{background:#303640}
+button:active{transform:scale(.97)}
+button.primary{background:#5868e8;border-color:#7380ff}
+input{
+  width:100%;padding:11px;margin:5px 0;
+  color:#fff;background:#15181d;border:1px solid var(--border);
+  border-radius:9px;outline:0;
+}
+input:focus{border-color:var(--accent)}
+.muted{color:var(--muted)!important}
+.row{display:flex;gap:8px}
+.row>*{flex:1}
+
+.screen{
+  position:fixed;inset:0;z-index:100;
+  display:grid;place-items:center;
+  background:rgba(5,7,10,.94);
+}
+.card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+  box-shadow:0 20px 70px #000b;
+}
+.auth-card{width:min(390px,92vw)}
+.auth-card h1{margin:0 0 5px;font-size:30px}
+.message{min-height:20px;color:#ff8f8f;margin-bottom:0}
+
+#app{width:100%;height:100%}
+.topbar{
+  position:fixed;z-index:10;top:0;left:0;right:0;height:56px;
+  display:flex;align-items:center;gap:14px;padding:0 10px;
+  background:#181b20;border-bottom:1px solid #343a43;
+  overflow:hidden;white-space:nowrap;
+}
+.logo{font-size:16px}
+.stats{display:flex;align-items:center;gap:12px;min-width:0;overflow:hidden}
+.stats span{color:#c8cdd5}
+.stats b{color:#fff}
+.top-actions{display:flex;gap:5px;margin-left:auto}
+.top-actions button{padding:7px 10px}
+
+#world{
+  position:fixed;top:56px;left:0;
+  width:100%;height:calc(100% - 56px);
+  display:block;background:#12151a;
+}
+
+#info{
+  position:fixed;z-index:5;right:12px;top:68px;
+  width:230px;padding:14px;
+  background:#1c2026ee;border:1px solid var(--border);
+  border-radius:12px;box-shadow:0 10px 35px #0006;
+}
+#info h3{margin:0 0 6px}
+#info hr{border:0;border-top:1px solid #353b44;margin:13px 0}
+.check{display:flex;align-items:center;gap:8px;color:#d5d9df}
+.check input{width:auto;margin:0}
+
+#buildbar{
+  position:fixed;z-index:8;left:50%;bottom:10px;
+  transform:translateX(-50%);
+  display:flex;gap:5px;padding:7px;
+  background:#1b1e24ee;border:1px solid var(--border);
+  border-radius:13px;box-shadow:0 10px 40px #0008;
+  max-width:96vw;overflow-x:auto;
+}
+#buildbar button{
+  min-width:78px;padding:7px 8px;text-align:center;
+  display:flex;flex-direction:column;gap:2px;align-items:center;
+}
+#buildbar button small{font-size:11px}
+#buildbar button em{font-size:10px;color:#aeb5c0;font-style:normal}
+#buildbar button.selected{outline:2px solid #fff;background:#414753}
+
+#toast{
+  position:fixed;z-index:30;left:50%;top:70px;
+  transform:translateX(-50%);
+  padding:9px 13px;border-radius:9px;
+  background:#272c34;color:#fff;border:1px solid #444b55;
+  opacity:0;pointer-events:none;transition:.2s;
+}
+#toast.show{opacity:1}
+
+.modal-card{
+  width:min(620px,92vw);max-height:82vh;overflow:auto;
+  position:relative;
+}
+.close{position:absolute;right:14px;top:14px;width:38px;height:38px;padding:0}
+#modalTitle{padding-right:45px}
+.rank,.factory{
+  background:#262b33;border:1px solid #373e48;
+  border-radius:9px;padding:11px 13px;margin:6px 0;
+}
+.rank{display:flex;justify-content:space-between;align-items:center}
+.rank b{color:#ffd45b}
+.factory{cursor:pointer}
+.factory:hover{background:#323842}
+
+@media(max-width:800px){
+  .topbar{gap:7px;height:52px}
+  #world{top:52px;height:calc(100% - 52px)}
+  .logo b{display:none}
+  .stats{gap:7px;font-size:11px}
+  .stats span:nth-child(n+4){display:none}
+  .top-actions button{padding:6px 8px}
+  #info{display:none}
+  #buildbar{bottom:6px;padding:5px}
+  #buildbar button{min-width:69px;padding:6px}
+}
+
+@media(max-width:430px){
+  .stats span:nth-child(n+3){display:none}
+  .top-actions{gap:3px}
+  .top-actions button{padding:6px 7px}
+  .modal-card{padding:19px}
+}
